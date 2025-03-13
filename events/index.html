@@ -1,0 +1,28 @@
+---
+layout: default
+body_classes: page-basic
+
+title: "Events"
+---
+
+<div class="section">
+  <div class="container">
+    <div class="title">
+      <div class="row align-items-center">
+        <div class="col-12 col-md-10">
+          <div class="title-heading">
+            <h1>{{ page.title }}</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section bg-base-bg-2">
+  {% include theme/custom-components/upcoming-events.html %}
+</div>
+
+<div class="section">
+  {% include theme/custom-components/past-events.html %}
+</div>
