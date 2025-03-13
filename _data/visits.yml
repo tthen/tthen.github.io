@@ -1,0 +1,132 @@
+#
+# List of Visits conducted by People in JLESC
+#
+#
+# ## Purpose
+#
+# - data source for the table on `research/visits/`
+#
+#
+# ## Identifier Format
+#
+# This is a unnamed list of entries, thus there are no identifiers.
+#
+#
+# ## Require Attributes
+#
+#   from           ID (`_data/people.yml`) of the person traveling
+#   start          date of the start of the visit; format: YYYY-MM-DD; consult note below
+#   end            date of the end of the visit; format: YYYY-MM-DD; consult note below
+#
+#
+# ## Conditional Required Attributes
+#
+# exactly one of those has to be given:
+#
+#   host             ID (`_data/institutes.yml`) of the host institute
+#   to               ID (`_data/people.yml`) of the person inviting the visitor
+#
+# Whenever possible, the `invitee` form should be preferred.
+# Only in those cases, where there is no clear JLESCee individual inviting the traveling person the
+# first form stating the host institute should be used.
+#
+#
+# ## Optional Attributes
+#
+#   no_exact       give value 'true' if the start and/or end date is not the exact date;
+#                  see note blow on those dates
+#
+#
+# ## Notes
+#
+# - In those rare cases where the exact dates (exact day of month) of the travel can not be given
+#   we advice the following procedure:
+#     - specify the start date to be the first day of the month the visit started
+#     - specify the end date to be the last day of the month the visit ended
+#     - add the optional attribute 'no_exact' with a value of 'true'
+#
+# - stick to a total line length of 100 characters ................................ this is here ->|
+#   For longer text fields (e.g. 'topics') use YAML's "Folded style" [1]:
+#
+#   johnson_j:
+#     ...
+#     topics: >
+#       a really long description spanning
+#       multiple lines
+#     ...
+#
+# [1]: https://en.wikipedia.org/wiki/YAML#Newlines_folded
+#
+
+- from: feld_c
+  host: riken
+  start: 2016-02-21
+  end: 2016-02-27
+
+- from: haensel_d
+  to: balaji_p
+  start: 2016-05-15
+  end: 2016-06-19
+
+- from: cavelan_a
+  to: cappello_f
+  start: 2016-02-29
+  end: 2016-05-30
+
+- from: pineda_morales_l
+  host: anl
+  start: 2015-05-01
+  end: 2015-08-31
+  no_exact: true
+
+- from: yildiz_o
+  host: anl
+  start: 2015-07-01
+  end: 2015-09-30
+  no_exact: true
+
+- from: jeannot_e
+  host: anl
+  start: 2015-03-01
+  end: 2015-03-31
+  no_exact: true
+
+- from: tessier_f
+  host: anl
+  start: 2015-03-01
+  end: 2015-03-11
+  no_exact: true
+  
+- from: matri_p
+  host: anl
+  start: 2017-05-01
+  end: 2017-07-28
+
+- from: cheriere_n
+  host: anl
+  start: 2016-01-01
+  end: 2016-06-30
+  no_exact: true
+
+- from: bleuse_r
+  host: ncsa
+  start: 2015-11-01
+  end: 2015-11-22
+  no_exact: true
+
+- from: martsinkevich_t
+  host: bsc
+  start: 2015-05-01
+  end: 2015-07-31
+  no_exact: true
+
+- from: cappello_f
+  host: bsc
+  start: 2016-07-04
+  end: 2016-07-08
+
+- from: subasi_o
+  host: anl
+  start: 2015-08-02
+  end: 2015-11-06
+
