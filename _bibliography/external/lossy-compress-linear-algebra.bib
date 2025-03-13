@@ -1,0 +1,84 @@
+---
+---
+%% NOTE
+%% The two lines above are required for Jekyll and the jekyll-scholar plugin to correctly parse
+%% and render the references on the web page.
+%% You may remove them when using this file with BibTeX natively in your publications to avoid nasty
+%% BibTeX errors.
+
+%
+% The entries in this file are sorted by YEAR (ascending).
+% If inserting new entries, please put them accordingly.
+%
+%
+% %% Convention for BibTeX keys
+%
+% Construct the BibTeX key according to the following schemes.
+% In the following, please replace these patterns accordingly:
+%
+%   YYYY           year of publication
+%   Aaaa           first author's surname in CamelCase
+%   Bbbb           second author's surname in CamelCase
+%
+% - for single-author publications:   AaaaYYYY
+% - for two-authors publications:     AaaaBbbbYYYY
+% - for three or more authors:        AaaaEtAlYYYY
+%
+% In case an author has published more than one publication in the same year, append lower case
+% letters for the second and ongoing publications:
+%
+%   first publication:   AaaaEtAlYYYY
+%   second publication:  AaaaEtAlYYYYb
+%
+%
+% %% Convention for BibTeX fields
+%
+% Please, stick to the following formatting convention to easy maintainability:
+%
+% - indent BibTeX fields of entries with 2 spaces (NOT tabs!)
+%
+% - order the BibTeX fields in alphabetic order
+%
+% - enclose all values within curly brakets '{...}'
+%
+% - do line breaks at 100 chars; this is ................................................. here -->|
+%
+% - and add a continuation indent of 2 after line breaks
+%
+% - put a colon ',' as well after the last field/value pair of an entry
+%
+%
+% %% Important
+%
+% Please, treat this file not different from usual source code files.
+%
+
+@inproceedings{ElmoreCalhoun2019,
+  title={Evaluating Lossy Compressors for Inline Compression},
+  author={Elmore, Donald and Calhoun, Jon},
+  booktitle = {Poster Session of the 2019 ACM/IEEE International Conference for High Performance
+      Computing, Networking, Storage and Analysis},
+  series = {SC '19},
+  year = {2019}, 
+  publisher = {IEEE Computer Society},
+  address = {Washington, DC, USA},
+}
+
+@inproceedings{Fulp:HPDC2021:ARC,
+author = {Fulp, Dakota and Poulos, Alexandra and Underwood, Robert and Calhoun, Jon C.},
+title = {ARC: An Automated Approach to Resiliency for Lossy Compressed Data via Error Correcting Codes},
+year = {2021},
+isbn = {9781450382175},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3431379.3460638},
+doi = {10.1145/3431379.3460638},
+abstract = {Progress in high-performance computing (HPC) systems has led to complex applications that stress the I/O subsystem by creating vast amounts of data. Lossy compression reduces data size considerably, but a single error renders lossy compressed data unusable. This sensitivity stems from the high information content per bit in compressed data and is a critical issue as soft errors that cause bit-flips have become increasingly commonplace in HPC systems. While many works have improved lossy compressor performance, few have sought to address this critical weakness.This paper presents ARC: Automated Resiliency for Compression. Given user-defined constraints on storage, throughput, and resiliency, ARC automatically determines the optimal error-correcting code (ECC) configuration before encoding data. We conduct an extensive fault injection study to fully understand the effects of soft errors on lossy compressed data and how to best protect it. We evaluate ARC's scalability, performance, resiliency, and ease of use. We find on a 40 core node that encoding and decoding demonstrate throughput up to 3730 MB/s and 3602 MB/s. ARC also detects and corrects multi-bit errors with a tunable overhead in terms of storage and throughput. Finally, we display the ease of using ARC and how to consider a systems failure rate when determining the constraints.},
+booktitle = {Proceedings of the 30th International Symposium on High-Performance Parallel and Distributed Computing},
+pages = {57–68},
+numpages = {12},
+keywords = {sz, error correcting codes, zfp, error propagation, error-bounded lossy compression, silent data corruption, soft error},
+location = {Virtual Event, Sweden},
+series = {HPDC '21}
+}
+
