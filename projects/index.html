@@ -1,0 +1,104 @@
+---
+layout: basic
+body_classes: page-basic
+
+title: Projects
+---
+
+<p class="lead">
+  <b>Project proposal:</b> If you would like to establish a new JLESC project, please use <a href="/assets/JLESC_collaboration_proposal.docx">this template</a> to describe your ideas. Then, submit the proposal to your local <a href="/about/people/">JLESC Executive Director</a> as well as to the JLESC Director Robert Speck via email. During the next conference call, your proposal will be discussed (and most likely accepted) and a project leader will be nominated (feel free to nominate someone yourself).
+  <br><br>
+  <b>Your duties:</b> To start your project officially, we ask you to submit a short description on this website, following the guidelines you can find <a href="https://github.com/JLESC/jlesc.github.io/wiki/Editing-Pages#editing-projects">here</a>. At each JLESC workshop, one of your project members is expected to report on the progress of your work. Furthermore, each year we ask the project leaders to submit a written report on the status of the project. These reports are then assembled into an official JLESC report for the Steering Committee to evaluate.
+  <br><br>
+  <b>Your benefits:</b> Besides the obvious benefits you have from participating in a JLESC project (glory, honor, happiness), members of an active project have access to travel funds supporting visits, exchanges and further activities within the project. In particular, JLESC encourages PhD students to make use of these funds. Also, scientists participating actively in projects will receive preferred invitations to the JLESC workshops. For more information please contact your local JLESC Executive Director.
+  <br><br>
+</p>
+
+
+<p class="lead">
+  There are a total of {{ site.projects | size }} projects in JLESC with the following stages:
+</p>
+
+<ul class="list-inline text-xs-center" id="project-states-stats-list">
+  {% for status in site.data.project_states %}
+    {% assign status_id = status[0] %}
+    <li class="list-inline-item project-status-{{ status_id }}-bg">
+      {% project_status {{ status_id }} %}: {% stats_for_status {{ status_id }} %}
+    </li>
+  {% endfor %}
+</ul>
+
+<div id="project-categories-accordion" role="tablist" aria-multiselectable="false">
+  {% for topic_hash in site.data.topics %}
+    {% assign topic_id = topic_hash[0] %}
+    {% assign topic = topic_hash[1] %}
+    <div class="card">
+      <div class="card-header" role="tab" id="category-heading-{{ topic_id }}">
+        <a class="pull-left"
+           data-toggle="collapse"
+           data-parent="#project-categories-accordion"
+           href="#category-{{ topic_id }}"
+           aria-expanded="true"
+           aria-controls="category-{{ topic_id }}">
+          <h4>{{ topic.title }}</h4>
+        </a>
+        <label class="tag tag-default pull-right" title="number projects for {{ topic.title }}"
+               data-toggle="tooltip">
+          <i class="fa fa-fw fa-cubes"></i>
+          {% stats_for_topic_status {{ topic_id }} all %}
+        </label>
+      </div>
+      <div class="card-block collapse in"
+           role="tabpanel"
+           id="category-{{ topic_id }}"
+           aria-labelledby="category-heading-{{ topic_id }}">
+        <p class="card-text">{{ topic.desc }}
+        {% if topic.leaders %}
+          The topic leaders are:
+            {% for member_id in topic.leaders %}
+              <li class="list-style">
+                {% person {{ member_id }} %}
+              </li>
+            {% endfor %}
+        {% endif %}
+        </p>
+        <br>
+        <div id="project-index" class="card-columns">
+          {% assign sorted_projects = site.projects | sort:'title' %}
+          {% for project in sorted_projects %}
+            {% unless project.topics contains topic_id %}
+              {% continue %}
+            {% endunless %}
+            <div class="card text-xs-center{% if project.status == 'help_wanted' %} card-outline-primary{% endif %}">
+              <div class="card-block">
+                <h4 class="card-title">
+                  <a href="{{ site.baseurl }}{{ project.url }}">{{ project.title }}</a>
+                </h4>
+                <ul class="card-text list-inline members">
+                {% if project.head %}
+                  <li class="list-inline-item">
+                    {% person {{ project.head }} %}
+                  </li>
+                {% endif %}
+                {% for member_id in project.members %}
+                  <li class="list-inline-item">
+                    {% person {{ member_id }} %}
+                  </li>
+                {% endfor %}
+                </ul>
+              </div>
+              <div class="card-footer project-status-{{ project.status }}-bg">
+                Status: {% project_status {{ project.status }} %}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+{% include contribute_footer.html
+  content='project'
+  link='https://github.com/JLESC/jlesc.github.io/wiki/Editing-Pages#editing-projects'
+%}
